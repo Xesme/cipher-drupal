@@ -65,8 +65,7 @@ function cipher_form_submit($form, &$form_state) {
   $phrase = drupal_strtolower($form_state['values']['phrase']);
   $shift_value = $form_state['values']['shift_value'];
   $direction = $form_state['values']['direction'];
-
-  $encrypted_phrase = '';
+  $encrypted_phrase = null;
 
   $phrase_arr = str_split($phrase);
 // for each letter of the string
@@ -75,23 +74,15 @@ function cipher_form_submit($form, &$form_state) {
     if(ctype_alnum($letter)) {
       // convert to ASCII Dec ** lowercase alphabet starts at 97 ***
       $ascii = ord($letter) - 97;
+
       if($direction === "right"){
         $encrypted_phrase = chr($ascii + 97 + $shift_value);
-      }
-      if($direction === "left"){
-        $encrypted_phrase = chr($ascii + 97 - $shift_value);
-        // needs conditional of range of alphabet to work
+      }else {
+        // shift to the left
+        $encrypted_phrase = chr($ascii + 123 - $shift_value);
       }
     }
   }
-
-
-  // this is not working
-  // if( $ascii < 0 || $ascii > 25) {
-  // }
-  // array_push($output, $$ascii);
-  // $encrypted_phrase = implode(" ", $output);
-
 
   $_SESSION['phrase_output'] = $encrypted_phrase;
   $form_state['redirect'] = 'cipher_success';
