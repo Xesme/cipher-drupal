@@ -11,7 +11,7 @@ function cipher_menu() {
     'title' => 'Success',
     'page callback' => 'cipher_success',
     'access callback' => TRUE,
-    'types' => MENU_CALLBACK,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -42,7 +42,7 @@ function cipher_form() {
     '#value' => 'Encrypt!',
   );
 
-  return $form
+  return $form;
 }
 
 function cipher_form_submit($form, &$form_state) {
@@ -50,4 +50,12 @@ function cipher_form_submit($form, &$form_state) {
   $shift_value = $form_state['values']['shift_value'];
   $direction = $form_state['values']['direction'];
   $_SESSION['phrase_output'] = $phrase;
+
+
+  $form_state['redirect'] = 'cipher_success';
+}
+
+function cipher_success() {
+  $encrypted_phrase = $_SESSION['phrase_output'];
+  return 'You have successfully encrypted your phrase! Here is your super secret phrase: <strong>' . $encrypted_phrase . '</strong>';
 }

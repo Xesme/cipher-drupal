@@ -34,7 +34,7 @@
 | Create function for form | function cipher_form() | complete |
 | Create form validation | "#required" => true | complete |
 | Create form submission with corresponding function | $form[submit] , function cipher_form_submit() | complete |
-| Create function for success  with session data | function cipher_success() | incomplete |
+| Create function for success  with session data | function cipher_success() | complete |
 | Create element validation for positive integers with corresponding functions | "#element_validation " => array(element_positive_integer, element_range) | incomplete |
 | Create element validation for shift direction with corresponding functions | "#element_validation " => array(element_direction) | incomplete |
 
