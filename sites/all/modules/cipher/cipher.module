@@ -22,19 +22,21 @@ function cipher_form() {
     '#title' => 'Phrase',
     '#type' => 'textfield',
     '#description' => t('Please enter a phrase to be encrypted.'),
-    "#require" => TRUE,
+    "#required" => TRUE,
   );
   $form['shift_value'] = array (
     '#title' => 'Shift Value',
     '#type' => 'textfield',
     '#description' => t('Please enter a number of spaces to shift (maximum of 26 spaces).'),
-    "#require" => TRUE,
+    '#element_validate' => array('element_validate_integer_positive', 'element_validate_range'),
+    "#required" => TRUE,
   );
   $form['direction'] = array (
     '#title' => 'Direction',
     '#type' => 'textfield',
     '#description' => t('Please enter a direction to shift letters (left or right).'),
-    "#require" => TRUE,
+    '#element_validate' => array( 'element_validate_direction'),
+    "#required" => TRUE,
   );
 
   $form['submit'] = array(
@@ -44,6 +46,20 @@ function cipher_form() {
 
   return $form;
 }
+
+function element_validate_range($element) {
+  if($element['#value'] < 1 || $element['#value'] > 26){
+    form_error($element, t('Please enter a number between 1 and 26.'));
+  }
+}
+
+// function element_validate_direction($element) {
+//   $direction = drupal_strtolower($element['#value']);
+//   $allowed = array('left','right');
+//   if(!in_array($direction, $allowed)){
+//     form_error($element, t('Please enter left or right.'));
+//   }
+// }
 
 function cipher_form_submit($form, &$form_state) {
   $phrase = $form_state['values']['phrase'];
