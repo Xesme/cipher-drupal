@@ -36,7 +36,7 @@
 | Create form submission with corresponding function | $form[submit] , function cipher_form_submit() | complete |
 | Create function for success  with session data | function cipher_success() | complete |
 | Create element validation for positive integers with corresponding functions | "#element_validation " => array('element_validate_integer_positive', 'element_validate_range') | complete |
-| Create element validation for shift direction with corresponding functions | "#element_validation " => array('element_validate_direction') | incomplete |
+| Create element validation for shift direction with corresponding functions | "#element_validation " => array('element_validate_direction') | complete |
 
 ## Setup/Installation Requirements
 
