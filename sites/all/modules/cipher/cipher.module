@@ -16,3 +16,24 @@ function cipher_menu() {
 
   return $items;
 }
+
+function cipher_form() {
+  $form['phrase'] = array (
+    '#title' => 'Phrase',
+    '#type' => 'textfield',
+    '#description' => t('Please enter a phrase to be encrypted.'),
+  );
+  $form['shift_vale'] = array (
+    '#title' => 'Shift Value',
+    '#type' => 'textfield',
+    '#description' => t('Please enter a number of spaces to shift (maximum of 26 spaces).'),
+  );
+  $form['direction'] = array (
+    '#title' => 'Direction',
+    '#type' => 'textfield',
+    '#description' => t('Please enter a direction to shift letters (left or right).'),
+  );
+
+  return $form
+
+}
