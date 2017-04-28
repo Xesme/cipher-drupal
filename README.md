@@ -39,11 +39,11 @@
 | Create element validation for shift direction with corresponding functions | "#element_validation " => array('element_validate_direction') | complete |
 | Add to submit form function: string to lower, filter for letters | drupal_strtolower($phrase), ctype_alnum($letter)| complete |
 | Convert letters to corresponding ASCII number | ord($letter) | complete |
-| Add conditional to account for alphabet range | if($ascii_letter < 0 || $ascii_letter > 26 ) | incomplete |
 | Use shift value to shift numbers to the right | incomplete |
+| Convert ascii back to letter | chr(ascii_letter + 97 (lower case letters start at 97 on chart)) | complete |
 | Use shift value to shift number to the left | abs() (more research needed not quite sure yet) | incomplete |
-| Convert ascii back to letter | chr(ascii_letter + 97 (lower case letters start at 97 on chart)) | incomplete |
-| Print encrypted phrase to sucess page | $_SESSION['phrase_output'] = $encrypted_phrase | started |
+| Add conditional to account for alphabet range | if($ascii < 0 || $ascii > 26 ) | incomplete |
+| Print encrypted phrase to success page | $_SESSION['phrase_output'] = $encrypted_phrase | started |
 
 
 

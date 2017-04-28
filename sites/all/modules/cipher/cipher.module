@@ -27,7 +27,7 @@ function cipher_form() {
   $form['shift_value'] = array (
     '#title' => 'Shift Value',
     '#type' => 'textfield',
-    '#description' => t('Please enter a number of spaces to shift (maximum of 26 spaces).'),
+    '#description' => t('Please enter a number of spaces to shift (maximum of 25 spaces).'),
     '#element_validate' => array('element_validate_integer_positive', 'element_validate_range'),
     "#required" => TRUE,
   );
@@ -48,8 +48,8 @@ function cipher_form() {
 }
 
 function element_validate_range($element) {
-  if($element['#value'] < 1 || $element['#value'] > 26){
-    form_error($element, t('Please enter a number between 1 and 26.'));
+  if($element['#value'] < 1 || $element['#value'] > 25){
+    form_error($element, t('Please enter a number between 1 and 25.'));
   }
 }
 
@@ -65,21 +65,31 @@ function cipher_form_submit($form, &$form_state) {
   $phrase = drupal_strtolower($form_state['values']['phrase']);
   $shift_value = $form_state['values']['shift_value'];
   $direction = $form_state['values']['direction'];
-  // output array
-  $output = array();
+
+  $encrypted_phrase = '';
 
   $phrase_arr = str_split($phrase);
 // for each letter of the string
   foreach($phrase_arr as $letter) {
   // check for alphabetical letter
     if(ctype_alnum($letter)) {
+      // convert to ASCII Dec ** lowercase alphabet starts at 97 ***
       $ascii = ord($letter) - 97;
-      $encrypted_phrase = $ascii;
-      // array_push($output, $$ascii);
+      if($direction === "right"){
+        $encrypted_phrase = chr($ascii + 97 + $shift_value);
+      }
+      if($direction === "left"){
+        $encrypted_phrase = chr($ascii + 97 - $shift_value);
+        // needs conditional of range of alphabet to work
+      }
     }
   }
 
 
+  // this is not working
+  // if( $ascii < 0 || $ascii > 25) {
+  // }
+  // array_push($output, $$ascii);
   // $encrypted_phrase = implode(" ", $output);
 
 
