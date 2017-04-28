@@ -76,11 +76,13 @@ function cipher_form_submit($form, &$form_state) {
       $ascii = ord($letter) - 97;
 
       if($direction === "right"){
-        $encrypted_phrase = chr($ascii + 97 + $shift_value);
+        $encrypted_phrase .= chr($ascii + 97 + $shift_value);
       }else {
         // shift to the left
-        $encrypted_phrase = chr($ascii + 123 - $shift_value);
+        $encrypted_phrase .= chr($ascii + 123 - $shift_value);
       }
+    } else {
+      $encrypted_phrase .= $letter;
     }
   }
 
