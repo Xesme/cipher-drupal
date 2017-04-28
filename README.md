@@ -32,7 +32,7 @@
 | Fill out necessary information in .info file | name, description, package, core, and files[] | complete |
 | Set up hook_menu within .module (with success page redirect) | function cipher_menu() | complete |
 | Create function for form | function cipher_form() | complete |
-| Create form validation | "#required" => true | incomplete |
+| Create form validation | "#required" => true | complete |
 | Create element validation for positive integers with corresponding functions | "#element_validation " => array(element_positive_integer, element_range) | incomplete |
 | Create element validation for shift direction with corresponding functions | "#element_validation " => array(element_direction) | incomplete |
 

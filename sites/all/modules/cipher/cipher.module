@@ -22,16 +22,19 @@ function cipher_form() {
     '#title' => 'Phrase',
     '#type' => 'textfield',
     '#description' => t('Please enter a phrase to be encrypted.'),
+    "#require" => TRUE,
   );
   $form['shift_vale'] = array (
     '#title' => 'Shift Value',
     '#type' => 'textfield',
     '#description' => t('Please enter a number of spaces to shift (maximum of 26 spaces).'),
+    "#require" => TRUE,
   );
   $form['direction'] = array (
     '#title' => 'Direction',
     '#type' => 'textfield',
     '#description' => t('Please enter a direction to shift letters (left or right).'),
+    "#require" => TRUE,
   );
 
   return $form
