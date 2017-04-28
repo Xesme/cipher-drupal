@@ -25,7 +25,8 @@
 | Download the Drupal core and create a new project | cd cipher project | completed |
 | Remove the .gitignore file | $ git rm .gitignore | completed |
 | Add README.md | $ touch README.md | completed |
-| Set up database with localhost user | navigate to myphpadmin | complete | 
+| Set up database with localhost user | navigate to myphpadmin | complete |
+| Export database to db-backup | export .zip to sites/db-backup | complete |
 | Create custom module for cipher | mkdir sites/all/modules/cipher | incomplete |
 |Create two files necessary for custom module (.info and .module)| touch sites/all/modules/cipher .info and .module | incomplete |
 | Fill out necessary information in .info file | name, description, package, core, and files[] | incomplete |
