@@ -1,0 +1,5 @@
+name = Shift Cipher Encryption
+description = An encryption module the performs shift ciphering on a phrase.
+package = Epicodus Modules
+core = 7.x
+files[] = cipher.module
