@@ -1,1 +1,18 @@
 <?php
+function cipher_menu() {
+  $items['cipher_encrypt'] = array(
+    'title' => 'Cipher Encryption',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cipher_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['cipher_success'] = array(
+    'title' => 'Success',
+    'page callback' => 'cipher_success',
+    'access callback' => TRUE,
+    'types' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
