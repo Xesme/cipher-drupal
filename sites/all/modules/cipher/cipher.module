@@ -73,12 +73,14 @@ function cipher_form_submit($form, &$form_state) {
   foreach($phrase_arr as $letter) {
   // check for alphabetical letter
     if(ctype_alnum($letter)) {
-      array_push($letter, $output);
+      $ascii = ord($letter) - 97;
+      $encrypted_phrase = $ascii;
+      // array_push($output, $$ascii);
     }
   }
 
 
-  $encrypted_phrase = implode(" ", $output);
+  // $encrypted_phrase = implode(" ", $output);
 
 
   $_SESSION['phrase_output'] = $encrypted_phrase;
