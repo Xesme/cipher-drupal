@@ -62,16 +62,31 @@ function element_validate_direction($element) {
 }
 
 function cipher_form_submit($form, &$form_state) {
-  $phrase = $form_state['values']['phrase'];
+  $phrase = drupal_strtolower($form_state['values']['phrase']);
   $shift_value = $form_state['values']['shift_value'];
   $direction = $form_state['values']['direction'];
-  $_SESSION['phrase_output'] = $phrase;
+  // output array
+  $output = array();
+
+  $phrase_arr = str_split($phrase);
+// for each letter of the string
+  foreach($phrase_arr as $letter) {
+  // check for alphabetical letter
+    if(ctype_alnum($letter)) {
+      array_push($letter, $output);
+    }
+  }
 
 
+  $encrypted_phrase = implode(" ", $output);
+
+
+  $_SESSION['phrase_output'] = $encrypted_phrase;
   $form_state['redirect'] = 'cipher_success';
 }
 
 function cipher_success() {
   $encrypted_phrase = $_SESSION['phrase_output'];
   return 'You have successfully encrypted your phrase! Here is your super secret phrase: <strong>' . $encrypted_phrase . '</strong>';
+
 }

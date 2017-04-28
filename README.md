@@ -37,6 +37,8 @@
 | Create function for success  with session data | function cipher_success() | complete |
 | Create element validation for positive integers with corresponding functions | "#element_validation " => array('element_validate_integer_positive', 'element_validate_range') | complete |
 | Create element validation for shift direction with corresponding functions | "#element_validation " => array('element_validate_direction') | complete |
+| Add to submit form function: string to lower, filter for letters | drupal_strtolower($phrase), ctype_alnum($letter)| complete |
+
 
 ## Setup/Installation Requirements
 
