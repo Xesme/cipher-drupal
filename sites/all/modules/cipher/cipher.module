@@ -24,7 +24,7 @@ function cipher_form() {
     '#description' => t('Please enter a phrase to be encrypted.'),
     "#require" => TRUE,
   );
-  $form['shift_vale'] = array (
+  $form['shift_value'] = array (
     '#title' => 'Shift Value',
     '#type' => 'textfield',
     '#description' => t('Please enter a number of spaces to shift (maximum of 26 spaces).'),
@@ -37,6 +37,17 @@ function cipher_form() {
     "#require" => TRUE,
   );
 
-  return $form
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Encrypt!',
+  );
 
+  return $form
+}
+
+function cipher_form_submit($form, &$form_state) {
+  $phrase = $form_state['values']['phrase'];
+  $shift_value = $form_state['values']['shift_value'];
+  $direction = $form_state['values']['direction'];
+  $_SESSION['phrase_output'] = $phrase;
 }
