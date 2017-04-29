@@ -42,7 +42,8 @@
 | Use shift value to shift numbers to the right | ascii + 97 + shift_value | complete |
 | Convert ascii back to letter | chr(ascii_letter + 97 (lower case letters start at 97 on chart)) | complete |
 | Use shift value to shift number to the left | chr($ascii + 123 - $shift_value) | complete |
-| Print encrypted phrase to success page | $_SESSION['phrase_output'] = $encrypted_phrase | started |
+| Print encrypted phrase to success page | $_SESSION['phrase_output'] = $encrypted_phrase | complete |
+| Add condition for shift right out of alphabet bounds | add conditional | incomplete | 
 
 
 

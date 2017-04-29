@@ -69,22 +69,28 @@ function cipher_form_submit($form, &$form_state) {
 
   $phrase_arr = str_split($phrase);
 // for each letter of the string
-  foreach($phrase_arr as $letter) {
+foreach($phrase_arr as $letter) {
   // check for alphabetical letter
-    if(ctype_alnum($letter)) {
-      // convert to ASCII Dec ** lowercase alphabet starts at 97 ***
-      $ascii = ord($letter) - 97;
+  if(ctype_alnum($letter)) {
+    // convert to ASCII Dec ** lowercase alphabet starts at 97 ***
+    $ascii = ord($letter) - 97;
 
-      if($direction === "right"){
-        $encrypted_phrase .= chr($ascii + 97 + $shift_value);
-      }else {
-        // shift to the left
-        $encrypted_phrase .= chr($ascii + 123 - $shift_value);
+    if($direction === "right"){
+      $num_letter = $ascii + 97 + $shift_value;
+      if($num_letter > 122){
+        $num = $num_letter - 26;
+        $encrypted_phrase .= chr($num);
+      } else {
+        $encrypted_phrase .= chr($num_letter);
       }
-    } else {
-      $encrypted_phrase .= $letter;
+      // shift to the left
+    }else {
+      $encrypted_phrase .= chr($ascii + 123 - $shift_value);
     }
+  } else {
+    $encrypted_phrase .= $letter;
   }
+}
 
   $_SESSION['phrase_output'] = $encrypted_phrase;
   $form_state['redirect'] = 'cipher_success';
