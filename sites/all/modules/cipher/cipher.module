@@ -73,20 +73,27 @@ foreach($phrase_arr as $letter) {
   // check for alphabetical letter
   if(ctype_alnum($letter)) {
     // convert to ASCII Dec ** lowercase alphabet starts at 97 ***
-    $ascii = ord($letter) - 97;
-
+    $ascii = ord($letter);
+    // conditional for right shift
     if($direction === "right"){
-      $num_letter = $ascii + 97 + $shift_value;
-      if($num_letter > 122){
-        $num = $num_letter - 26;
-        $encrypted_phrase .= chr($num);
+      $right_shift = $ascii + $shift_value;
+      //  conditional for z
+      if($right_shift > 122){
+        $loop_back = $right_shift - 26;
+        $encrypted_phrase .= chr($loop_back);
       } else {
-        $encrypted_phrase .= chr($num_letter);
+        $encrypted_phrase .= chr($right_shift);
       }
       // shift to the left
-    }else {
-      $encrypted_phrase .= chr($ascii + 123 - $shift_value);
+    } else {
+      $ascii = ord($letter);
+      $left_shift = $ascii - $shift_value;
+      if($left_shift <= 96) {
+        $left_shift = $ascii + 26 - $shift_value;
+      }
+      $encrypted_phrase .= chr($left_shift);
     }
+    // adds spaces and puncuation if it is not a letter
   } else {
     $encrypted_phrase .= $letter;
   }
